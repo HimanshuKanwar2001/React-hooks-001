@@ -23,14 +23,16 @@ function App() {
 
   // const router=createBrowserRouter(routes);
 
+
+
   const router = createBrowserRouter([
     {
-      path: "/root",
+      path: "/root",//absoulte path
       element: <Navbar />,
       children: [
-        { index: true, element: <Home /> },
-        { path: "/about", element: <About /> },
-        { path: "/items", element: <Items /> },
+        { index: true, element: <Home /> },//absoulte path
+        { path: "/root/about", element: <About /> },   //absoulte path
+        { path: "/root/items", element: <Items /> },//absoulte path
       ],
     },
   ]);

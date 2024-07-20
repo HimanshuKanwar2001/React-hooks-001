@@ -7,10 +7,10 @@ function Navbar() {
         <NavLink to="/" style={({isActive})=>isActive? {color:"blue"} :undefined}>
           <h4>HOME</h4>
         </NavLink >
-        <NavLink to="/about" style={({isActive})=>isActive? {color:"blue"} :undefined}>
+        <NavLink to="/root/about" style={({isActive})=>isActive? {color:"blue"} :undefined}>
           <h4>ABOUT</h4>
         </NavLink>
-        <NavLink to="/items" style={({isActive})=>isActive? {color:"blue"} :undefined}>
+        <NavLink to="/root/items" style={({isActive})=>isActive? {color:"blue"} :undefined}>
           <h4>ITEMS</h4>
         </NavLink>
       </div>
