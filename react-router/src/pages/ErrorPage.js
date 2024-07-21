@@ -1,9 +1,14 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 function ErrorPage() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => navigate(-1), 3000);
+  }, []);
+
   return (
     <>
-      <main>
-        <h2>OPPSS! Something went wrong</h2>
-      </main>
+      <h1>OOOPPSSS!!!!! Something went wrong</h1>
     </>
   );
 }
