@@ -1,13 +1,10 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  createRoutesFromElements,
-  Route,
-} from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Items from "./pages/Items";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import ItemDetails from "./pages/ItemDetails";
+import Items from "./pages/Items";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   // const routes=createRoutesFromElements(
@@ -23,16 +20,21 @@ function App() {
 
   // const router=createBrowserRouter(routes);
 
-
-
   const router = createBrowserRouter([
     {
-      path: "/root",//absoulte path
+      path: "/", //relative path
       element: <Navbar />,
+      errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <Home /> },//absoulte path
-        { path: "/root/about", element: <About /> },   //absoulte path
-        { path: "/root/items", element: <Items /> },//absoulte path
+        { index: true, element: <Home /> }, //relative  path
+        { path: "about", element: <About /> }, //relative  path
+        {
+          path: "items",
+          children: [
+            { index: true, element: <Items /> },
+            { path: ":id", element: <ItemDetails /> },
+          ],
+        }, //relative  path
       ],
     },
   ]);
