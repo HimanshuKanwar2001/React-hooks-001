@@ -8,7 +8,7 @@ const ChildComponent = (props) => (
       padding: "10px"
     }}
   >
-    <GrandChildComponent color={props.color} />
+    <GrandChildComponent />
   </div>
 );
 
