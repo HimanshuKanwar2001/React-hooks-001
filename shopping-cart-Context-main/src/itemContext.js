@@ -13,22 +13,27 @@ function CustomItemContext({ children }) {
   const [total, setTotal] = useState(0);
   const [item, setItem] = useState(0);
   const [showCart, setShowCart] = useState(false);
-  const [cart,setCart]=useState([]);
+  const [cart, setCart] = useState([]);
 
   const handleAdd = (prod) => {
     // console.log(prod);
-    const index= cart.findIndex((item)=> item.id === prod.id);
+    const index = cart.findIndex((item) => item.id === prod.id);
 
-    if(index === -1){
-      setCart([...cart,{...prod,qty:1}]);
+    if (index === -1) {
+      setCart([...cart, { ...prod, qty: 1 }]);
       console.log(cart);
-      setTotal((prevState)=>prevState+prod.price);
-      
+      setTotal(total + prod.price);
+    } else {
+      cart[index].qty++;
+      setCart(cart);
+      console.log(cart);
+      setTotal(total + cart[index].price);
     }
+    setItem(item + 1);
   };
 
   const handleRemove = (price) => {
-    if (total === 0) {
+    if (total <= 0) {
       return;
     }
     setTotal((prevState) => prevState - price);
@@ -44,7 +49,15 @@ function CustomItemContext({ children }) {
   };
   return (
     <itemContext.Provider
-      value={{ total, item, handleAdd, handleRemove, handleReset, toggle }}
+      value={{
+        total,
+        item,
+        handleAdd,
+        handleRemove,
+        handleReset,
+        toggle,
+        cart,
+      }}
     >
       {showCart && <CartModal toggle={toggle} />}
       {children}
