@@ -4,7 +4,7 @@ import styles from "../styles/Total.module.css";
 import { useValue } from "../itemContext";
 
 function Navbar() {
-  const { total, item,handleReset } = useValue();
+  const { total, item,handleReset,toggle } = useValue();
 
   return (
     <div className={styles.container}>
@@ -12,6 +12,7 @@ function Navbar() {
       <h1>Items: {item}</h1>
       <div className={styles.buttonsWrapper}>
         <button className={styles.button} onClick={()=>handleReset()}>Reset</button>
+        <button className={styles.button} onClick={()=>toggle()}>Cart</button>
       </div>
 
     </div>

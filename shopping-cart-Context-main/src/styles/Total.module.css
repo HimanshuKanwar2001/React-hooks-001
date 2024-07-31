@@ -20,6 +20,7 @@
     background-color: var(--primary-color);
     color: var(--secondary-color);
     font-size: 1.5rem;
+    margin: 1rem;
     font-weight: 600;
     cursor: pointer;
     padding: 0.5rem 1rem;
