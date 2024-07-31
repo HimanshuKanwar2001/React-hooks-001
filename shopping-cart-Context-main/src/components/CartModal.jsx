@@ -2,8 +2,8 @@ import React from "react";
 import styles from "../styles/CartModal.module.css";
 import { useValue } from "../itemContext";
 
-function CartModal({ toggle }) {
-  const { cart } = useValue();
+function CartModal() {
+  const { cart,clear,total,toggle } = useValue();
   console.log(cart);
 
   return (
@@ -11,7 +11,7 @@ function CartModal({ toggle }) {
       <div className={styles.closeButton} onClick={() => toggle()}>
         Close
       </div>
-      <div className={styles.clearButton}>Clear</div>
+      <div className={styles.clearButton} onClick={()=>clear()}>Clear</div>
       <div className={styles.itemContainer}>
         {cart.map((item) => {
           return (
@@ -25,7 +25,7 @@ function CartModal({ toggle }) {
       </div>
       <div className={styles.total}>
         <div className={styles.totalText}>Total</div>
-        <div className={styles.totalPrice}>$Price</div>
+        <div className={styles.totalPrice}>${total}</div>
       </div>
     </div>
   );

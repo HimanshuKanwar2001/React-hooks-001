@@ -32,14 +32,25 @@ function CustomItemContext({ children }) {
     setItem(item + 1);
   };
 
-  const handleRemove = (price) => {
-    if (total <= 0) {
-      return;
+  const handleRemove = (id) => {
+    const index = cart.findIndex((item) => item.id === id);
+    if (index !== -1) {
+      cart[index].qty--;
+      setTotal(total - cart[index].price);
+      setItem(item - 1);
+      if(cart[index].qty === 0){
+        cart.splice(index,1);
+      }
+      
     }
-    setTotal((prevState) => prevState - price);
-    setItem((prevState) => prevState - 1);
+    setCart(cart);
   };
 
+  const clear = () => {
+    setCart([]);
+    setTotal(0);
+    setItem(0);
+  };
   const handleReset = () => {
     setTotal(0);
     setItem(0);
@@ -57,6 +68,7 @@ function CustomItemContext({ children }) {
         handleReset,
         toggle,
         cart,
+        clear,
       }}
     >
       {showCart && <CartModal toggle={toggle} />}
