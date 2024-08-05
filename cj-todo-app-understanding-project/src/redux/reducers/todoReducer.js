@@ -2,10 +2,13 @@ import { ADD_TODO,TOGGLE_TODO } from "../actions/todoActions";
 
 
 const initialState={
-    todos:[]
+    todos:[
+        {"text":"Meeting at 9",completed:true},
+        {"text":"Lunch at 2",completed:false},   
+    ],
 }
 
-export function todoReducer(state,action){
+export function todoReducer(state = initialState ,action){
     
     
     switch(action.type){
@@ -26,7 +29,7 @@ export function todoReducer(state,action){
             return{
                 ...state,
                 todos: state.todos.map((todo,index)=> {
-                    if(index == action.index){
+                    if(index === action.index){
                         todo.completed=!todo.completed;
                     }
                     return todo;
